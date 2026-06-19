@@ -69,7 +69,7 @@
     /* ── SUMMARY PILLS ── */
     .summary-row {
       display: flex; flex-wrap: wrap; gap: 10px;
-      max-width: 900px; margin: 0 auto; padding: 20px 32px 0;
+      max-width: 900px; margin: 0 auto; padding: 20px 32px 18px;
     }
     .summary-pill {
       display: flex; align-items: center; gap: 8px;
@@ -337,35 +337,35 @@ const DAYS = [
 ═══════════════════════════════ */
 const EATS_DATA = {
   hanoi: [
-    { nameKo:"E&O 티하우스",                  nameEn:"Eastern and Oriental Tea House and Coffee Parlour", category:"카페 / 디저트",  desc:"하노이 케이크 맛집", mapUrl:"https://www.google.com/maps/search/?api=1&query=Eastern%20and%20Oriental%20Tea%20House%20and%20Coffee%20Parlour%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"분짜 74 항꽛",                  nameEn:"Bún chả 74 Hàng Quạt",                              category:"분짜",          desc:"하노이 분짜", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%2074%20H%C3%A0ng%20Qu%E1%BA%A1t%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"포 가 응우옛",                   nameEn:"",                                                  category:"닭고기 쌀국수", desc:"하노이 닭고기쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"차까 탕롱",                      nameEn:"Chả Cá Thăng Long",                                 category:"생선구이",       desc:"하노이 베트남식 생선구이", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ch%E1%BA%A3%20C%C3%A1%20Th%C4%83ng%20Long%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"분보남보 백프응",                nameEn:"",                                                  category:"비빔쌀국수",     desc:"하노이 비빔쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"포틴",                          nameEn:"Phở Thìn",                                          category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ph%E1%BB%9F%20Th%C3%ACn%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"호아베오",                       nameEn:"호아베오",                                           category:"망고 빙수",      desc:"하노이 망고빙수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%ED%98%B8%EC%95%84%EB%B2%A0%EC%98%A4%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"베오 커피 (기찻길 카페)",         nameEn:"BEO COFFEE (Train Street Coffee)",                  category:"카페",           desc:"하노이 기찻길 카페", mapUrl:"https://www.google.com/maps/search/?api=1&query=BEO%20COFFEE%20%28Train%20Street%20Coffee%29%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"반미 비",                        nameEn:"Bánh Mỳ Bi",                                        category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20M%E1%BB%B3%20Bi%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"미스터 버이 반쎄오",              nameEn:"미스터 버이 미잉 떠이 반쎄오",                        category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%AF%B8%EC%8A%A4%ED%84%B0%20%EB%B2%84%EC%9D%B4%20%EB%AF%B8%EC%9E%89%20%EB%96%A0%EC%9D%B4%20%EB%B0%98%EC%8E%84%EC%98%A4%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"떰비",                          nameEn:"Tam Vi",                                            category:"베트남 가정식",   desc:"하노이 미슐랭 선정 베트남 가정식 (예약 필요)", mapUrl:"https://www.google.com/maps/search/?api=1&query=Tam%20Vi%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"분짜 흐엉리엔 (오바마 분짜)",     nameEn:"분짜 흐엉리엔(오바마 분짜)",                          category:"분짜",           desc:"오바마가 방문했던 하노이 분짜", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%B6%84%EC%A7%9C%20%ED%9D%90%EC%97%89%EB%A6%AC%EC%97%94%28%EC%98%A4%EB%B0%94%EB%A7%88%20%EB%B6%84%EC%A7%9C%29%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"포 10 리꾸옥수",                 nameEn:"Pho 10 Ly Quoc Su",                                  category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=Pho%2010%20Ly%20Quoc%20Su%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"꽌안응온",                       nameEn:"꽌안응온",                                           category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EA%BD%8C%EC%95%88%EC%9D%91%EC%98%A8%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"반미 마마",                      nameEn:"Bánh mì Mama",                                      category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20m%C3%AC%20Mama%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"반미 25",                       nameEn:"Bánh mì 25",                                         category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20m%C3%AC%2025%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"맥도날드 호안끼엠점",            nameEn:"맥도날드 호안끼엠점",                                 category:"패스트푸드",     desc:null, mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%ED%98%B8%EC%95%88%EB%81%BC%EC%97%A0%EC%A0%90%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"콩 카페 (Cầu Gỗ점)",            nameEn:"Cong Caphe",                                         category:"카페",           desc:"하노이 대표 카페 체인", mapUrl:"https://www.google.com/maps/search/?api=1&query=Cong%20Caphe%20116%20P.%20C%E1%BA%A7u%20G%E1%BB%97%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"카페 지앙",                      nameEn:"카페 지앙",                                          category:"카페",           desc:"에그커피 추천 카페", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EC%B9%B4%ED%8E%98%20%EC%A7%80%EC%95%99%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"풍향고 치즈케익",                nameEn:"풍향고 치즈케익",                                     category:"카페",           desc:"풍향고에서 방문했던 하노이 치즈케익", mapUrl:"https://www.google.com/maps/search/?api=1&query=%ED%92%8D%ED%96%A5%EA%B3%A0%20%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B5%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"E&O 티하우스",                  nameEn:"Eastern and Oriental Tea House and Coffee Parlour", category:"카페 / 디저트",  desc:"하노이 케이크 맛집", mapUrl:"https://maps.app.goo.gl/CzYT8y7mToTkDLcdA" },
+    { nameKo:"분짜 74 항꽛",                  nameEn:"Bún chả 74 Hàng Quạt",                              category:"분짜",          desc:"하노이 분짜", mapUrl:"https://maps.app.goo.gl/eFMmQwH7NrSRDgPy9" },
+    { nameKo:"포 가 응우옛",                   nameEn:"",                                                  category:"닭고기 쌀국수", desc:"하노이 닭고기쌀국수", mapUrl:"https://maps.app.goo.gl/9bXtuXLsKaRomZ3fA" },
+    { nameKo:"차까 탕롱",                      nameEn:"Chả Cá Thăng Long",                                 category:"생선구이",       desc:"하노이 베트남식 생선구이", mapUrl:"https://maps.app.goo.gl/mgwBfyjmHxEtbCi26" },
+    { nameKo:"분보남보 백프응",                nameEn:"",                                                  category:"비빔쌀국수",     desc:"하노이 비빔쌀국수", mapUrl:"https://maps.app.goo.gl/KGy4hBsxZaQoqAZm7" },
+    { nameKo:"포틴",                          nameEn:"Phở Thìn",                                          category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://maps.app.goo.gl/eAi4QYS7yq1BgfbC9" },
+    { nameKo:"호아베오",                       nameEn:"호아베오",                                           category:"망고 빙수",      desc:"하노이 망고빙수", mapUrl:"https://maps.app.goo.gl/1mkACr8yThFZeQSKA" },
+    { nameKo:"베오 커피 (기찻길 카페)",         nameEn:"BEO COFFEE (Train Street Coffee)",                  category:"카페",           desc:"하노이 기찻길 카페", mapUrl:"https://maps.app.goo.gl/oTy8LSF4KeUoGhMm8" },
+    { nameKo:"반미 비",                        nameEn:"Bánh Mỳ Bi",                                        category:"반미",           desc:"하노이 반미", mapUrl:"https://maps.app.goo.gl/USV1uHXmzQ5aXuoZA" },
+    { nameKo:"미스터 버이 반쎄오",              nameEn:"미스터 버이 미잉 떠이 반쎄오",                        category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://maps.app.goo.gl/gV3mVfpiWN6Bs9mk9" },
+    { nameKo:"떰비",                          nameEn:"Tam Vi",                                            category:"베트남 가정식",   desc:"하노이 미슐랭 선정 베트남 가정식 (예약 필요)", mapUrl:"https://maps.app.goo.gl/VdGVRM1famAMQExM6" },
+    { nameKo:"분짜 흐엉리엔 (오바마 분짜)",     nameEn:"분짜 흐엉리엔(오바마 분짜)",                          category:"분짜",           desc:"오바마가 방문했던 하노이 분짜", mapUrl:"https://maps.app.goo.gl/LUZWLHw5mV8ZN2Bu9" },
+    { nameKo:"포 10 리꾸옥수",                 nameEn:"Pho 10 Ly Quoc Su",                                  category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://maps.app.goo.gl/D3e97eDqQDXURYvH9" },
+    { nameKo:"꽌안응온",                       nameEn:"꽌안응온",                                           category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://maps.app.goo.gl/UzJpx9mezQZsdLxN7" },
+    { nameKo:"반미 마마",                      nameEn:"Bánh mì Mama",                                      category:"반미",           desc:"하노이 반미", mapUrl:"https://maps.app.goo.gl/B1hniQHjHifVeY2g7" },
+    { nameKo:"반미 25",                       nameEn:"Bánh mì 25",                                         category:"반미",           desc:"하노이 반미", mapUrl:"https://maps.app.goo.gl/jgz7if7XzuBdbN2H8" },
+    { nameKo:"맥도날드 호안끼엠점",            nameEn:"맥도날드 호안끼엠점",                                 category:"패스트푸드",     desc:null, mapUrl:"https://maps.app.goo.gl/7bVZJH48ZnaYTtaT7" },
+    { nameKo:"콩 카페 (Cầu Gỗ점)",            nameEn:"Cong Caphe",                                         category:"카페",           desc:"하노이 대표 카페 체인", mapUrl:"https://maps.app.goo.gl/vvNCMickF6DcoES59" },
+    { nameKo:"카페 지앙",                      nameEn:"카페 지앙",                                          category:"카페",           desc:"에그커피 추천 카페", mapUrl:"https://maps.app.goo.gl/18LqfDjXsmKVqtS88" },
+    { nameKo:"풍향고 치즈케익",                nameEn:"풍향고 치즈케익",                                     category:"카페",           desc:"풍향고에서 방문했던 하노이 치즈케익", mapUrl:"https://maps.app.goo.gl/T23xTk2P7JMNGc9r6" },
   ],
   sapa: [
-    { nameKo:"쩌띤 꽌 팬시판점",               nameEn:"Chợ Tình Quán - 63D Fansipan, Sapa",                category:"철갑상어 핫팟",  desc:"풍향고에서 방문했던 사파 철갑상어 핫팟", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20T%C3%ACnh%20Qu%C3%A1n%20-%2063D%20Fansipan%2C%20Sapa%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"반미 & 브렉퍼스트",              nameEn:"Banh Mi & Breakfast",                               category:"반미 / 브런치",  desc:null, mapUrl:"https://www.google.com/maps/search/?api=1&query=Banh%20Mi%20%26%20Breakfast%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"탄쑤언 사파 숯불구이",           nameEn:"QUÁN NƯỚNG THANH XUÂN SAPA",                        category:"꼬치구이 / 그릴", desc:"사파 꼬치구이", mapUrl:"https://www.google.com/maps/search/?api=1&query=QU%C3%81N%20N%C6%AF%E1%BB%9ANG%20THANH%20XU%C3%82N%20SAPA%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"굿모닝 베트남",                  nameEn:"Good Morning Vietnam",                              category:"베트남 음식",     desc:"사파 코코넛커리", mapUrl:"https://www.google.com/maps/search/?api=1&query=Good%20Morning%20Vietnam%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"리틀 사파",                      nameEn:"",                                                  category:"베트남 음식",     desc:"사파 시내 베트남음식점", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"패밀리 키친 & 카페",             nameEn:"Family Kitchen & Café",                             category:"베트남 음식",     desc:"사파 베트남 음식점", mapUrl:"https://www.google.com/maps/search/?api=1&query=Family%20Kitchen%20%26%20Caf%C3%A9%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"야미 레스토랑",                  nameEn:"Yummy Restaurant",                                  category:"베트남 음식",     desc:"풍향고에서 방문했던 사파 코코넛커리", mapUrl:"https://www.google.com/maps/search/?api=1&query=Yummy%20Restaurant%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"쩌띤 꽌 팬시판점",               nameEn:"Chợ Tình Quán - 63D Fansipan, Sapa",                category:"철갑상어 핫팟",  desc:"풍향고에서 방문했던 사파 철갑상어 핫팟", mapUrl:"https://maps.app.goo.gl/jkJFqXygNwzYBrYx7" },
+    { nameKo:"반미 & 브렉퍼스트",              nameEn:"Banh Mi & Breakfast",                               category:"반미 / 브런치",  desc:null, mapUrl:"https://maps.app.goo.gl/KQyAjyf8rCJznfhU8" },
+    { nameKo:"탄쑤언 사파 숯불구이",           nameEn:"QUÁN NƯỚNG THANH XUÂN SAPA",                        category:"꼬치구이 / 그릴", desc:"사파 꼬치구이", mapUrl:"https://maps.app.goo.gl/2okcZd7BwGm6G5316" },
+    { nameKo:"굿모닝 베트남",                  nameEn:"Good Morning Vietnam",                              category:"베트남 음식",     desc:"사파 코코넛커리", mapUrl:"https://maps.app.goo.gl/a2CJtCbvZAUCQqfr9" },
+    { nameKo:"리틀 사파",                      nameEn:"",                                                  category:"베트남 음식",     desc:"사파 시내 베트남음식점", mapUrl:"https://maps.app.goo.gl/zqsBnazFLhTFDnwSA" },
+    { nameKo:"패밀리 키친 & 카페",             nameEn:"Family Kitchen & Café",                             category:"베트남 음식",     desc:"사파 베트남 음식점", mapUrl:"https://maps.app.goo.gl/GRjfkb5HUDP9MnT47" },
+    { nameKo:"야미 레스토랑",                  nameEn:"Yummy Restaurant",                                  category:"베트남 음식",     desc:"풍향고에서 방문했던 사파 코코넛커리", mapUrl:"https://maps.app.goo.gl/W4UbkkxoRiNUkz7F8" },
   ]
 };
 
@@ -374,15 +374,15 @@ const EATS_DATA = {
 ═══════════════════════════════ */
 const MASSAGE_DATA = {
   hanoi: [
-    { nameKo:"센 스파",               nameEn:"",                                               category:"마사지 / 스파", desc:"하노이 승무원픽 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"웰터치 스파 2호점",      nameEn:"Well Touch Spa 2",                                category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Well%20Touch%20Spa%202%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"욜로스파",               nameEn:"Hanoi Massage Yolo Spa",                          category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Hanoi%20Massage%20Yolo%20Spa%20%ED%95%98%EB%85%B8%EC%9D%B4" },
-    { nameKo:"에스테바 스파",          nameEn:"Estheva Spa",                                     category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Estheva%20Spa%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"센 스파",               nameEn:"",                                               category:"마사지 / 스파", desc:"하노이 승무원픽 마사지", mapUrl:"https://maps.app.goo.gl/5Fz7wkMjfLTyT5KZ6" },
+    { nameKo:"웰터치 스파 2호점",      nameEn:"Well Touch Spa 2",                                category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://maps.app.goo.gl/1pD6TMGUH9ASBmzw7" },
+    { nameKo:"욜로스파",               nameEn:"Hanoi Massage Yolo Spa",                          category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://maps.app.goo.gl/x7rj3hMXEVv9ecnaA" },
+    { nameKo:"에스테바 스파",          nameEn:"Estheva Spa",                                     category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://maps.app.goo.gl/T2a4icV68DCSUM1C9" },
   ],
   sapa: [
-    { nameKo:"민쩌우 스파",            nameEn:"Minh Châu Spa",            category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Minh%20Ch%C3%A2u%20Spa%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"에덴 마사지 & 스파",     nameEn:"Eden Massage & Spa",       category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Eden%20Massage%20%26%20Spa%20%EC%82%AC%ED%8C%8C" },
-    { nameKo:"마사지 017 동러이",      nameEn:"MASSAGE 017 Đồng Lợi",     category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=MASSAGE%20017%20%C4%90%E1%BB%93ng%20L%E1%BB%A3i%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"민쩌우 스파",            nameEn:"Minh Châu Spa",            category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://maps.app.goo.gl/Ko7agyv8nj3BjsWn9" },
+    { nameKo:"에덴 마사지 & 스파",     nameEn:"Eden Massage & Spa",       category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://maps.app.goo.gl/J6JLCt4mQNXNABrx7" },
+    { nameKo:"마사지 017 동러이",      nameEn:"MASSAGE 017 Đồng Lợi",     category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://maps.app.goo.gl/pseaA5LuHqpPVNQFA" },
   ]
 };
 
