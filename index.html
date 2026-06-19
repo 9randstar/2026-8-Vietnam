@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2025 베트남 여행</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --hanoi:    #c0392b;
+      --hanoi-mid:#e07060;
+      --sapa:     #1a6b5c;
+      --sapa-mid: #6ab8a8;
+      --ink:      #1a1a1a;
+      --muted:    #6b7280;
+      --subtle:   #9ca3af;
+      --line:     #e5e7eb;
+      --surface:  #ffffff;
+      --bg:       #f8f7f5;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.5;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      background: var(--surface); border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .top-nav-inner { max-width: 900px; margin: 0 auto; display: flex; }
+    .top-tab {
+      flex: 1; padding: 16px 12px;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600;
+      color: var(--muted); transition: all 0.18s; text-align: center;
+    }
+    .top-tab:hover { color: var(--ink); }
+    .top-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 32px 40px;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: center / cover no-repeat;
+    }
+    .hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,20,30,0.82) 0%, rgba(15,20,30,0.2) 55%, transparent 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; width: 100%; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 100px;
+      padding: 5px 14px; color: rgba(255,255,255,0.9);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #f8a5a0; }
+    .hero h1 { font-size: clamp(34px, 6vw, 64px); font-weight: 700; color: #fff; line-height: 1.05; letter-spacing: -0.5px; }
+    .hero-meta { display: flex; gap: 16px; align-items: center; margin-top: 14px; color: rgba(255,255,255,0.7); font-size: 13px; }
+    .hero-meta .sep { color: rgba(255,255,255,0.3); }
+
+    /* ── SUMMARY PILLS ── */
+    .summary-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      max-width: 900px; margin: 0 auto; padding: 20px 32px 0;
+    }
+    .summary-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 100px; padding: 7px 14px; font-size: 13px;
+    }
+    .summary-pill .pill-label { color: var(--muted); font-size: 12px; }
+
+    /* ── SUB NAV ── */
+    .sub-nav {
+      background: var(--surface); border-bottom: 1px solid var(--line);
+      position: sticky; top: 49px; z-index: 100;
+    }
+    .sub-nav-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; overflow-x: auto; scrollbar-width: none;
+    }
+    .sub-nav-inner::-webkit-scrollbar { display: none; }
+    .sub-btn {
+      flex-shrink: 0; display: flex; align-items: center; gap: 7px;
+      padding: 13px 18px; background: none; border: none; border-bottom: 2px solid transparent;
+      cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500;
+      color: var(--muted); transition: all 0.18s; white-space: nowrap;
+    }
+    .sub-btn:hover { color: var(--ink); }
+    .sub-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+    .sub-btn .pip { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.4; transition: opacity 0.18s; }
+    .sub-btn.active .pip { opacity: 1; }
+    .sub-btn[data-city="hanoi"].active  { color: var(--hanoi);  border-bottom-color: var(--hanoi); }
+    .sub-btn[data-city="sapa"].active   { color: var(--sapa);   border-bottom-color: var(--sapa); }
+
+    /* ── CONTENT ── */
+    .content-area { max-width: 900px; margin: 0 auto; padding: 40px 32px 80px; }
+
+    /* ── CITY SECTION ── */
+    .city-section { margin-bottom: 52px; }
+    .city-section:last-child { margin-bottom: 0; }
+    .city-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+    .city-header h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.3px; }
+    .city-header .city-range {
+      font-size: 12px; color: var(--muted); padding: 3px 10px;
+      background: var(--bg); border-radius: 100px; border: 1px solid var(--line);
+    }
+    .hanoi .city-header h2  { color: var(--hanoi); }
+    .sapa  .city-header h2  { color: var(--sapa); }
+
+    /* ── DAY CARDS ── */
+    .days-grid { display: grid; gap: 10px; }
+    .day-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden; transition: box-shadow 0.18s;
+    }
+    .day-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    .hanoi .day-card { border-left: 3px solid var(--hanoi); }
+    .sapa  .day-card { border-left: 3px solid var(--sapa); }
+
+    .day-card-head { display: flex; align-items: center; }
+    .day-date-col {
+      flex-shrink: 0; width: 80px; padding: 16px 12px;
+      border-right: 1px solid var(--line); text-align: center;
+    }
+    .day-date-num { font-size: 18px; font-weight: 700; }
+    .day-date-dow { font-size: 11px; color: var(--subtle); margin-top: 2px; }
+    .day-title-col { flex: 1; padding: 16px 18px; }
+    .day-title-col h3 { font-size: 14px; font-weight: 500; letter-spacing: -0.1px; }
+
+    /* ── STOPS ── */
+    .stops { padding: 0 18px 18px 96px; display: flex; flex-direction: column; }
+    .stop-row { display: flex; align-items: flex-start; padding: 4px 0; }
+    .stop-line-col { flex-shrink: 0; width: 26px; display: flex; flex-direction: column; align-items: center; }
+    .stop-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .stop-connector { width: 1px; flex: 1; min-height: 10px; background: var(--line); margin-top: 2px; }
+    .stop-row:last-child .stop-connector { display: none; }
+    .stop-text { font-size: 13px; padding: 3px 0; line-height: 1.4; }
+    .hanoi .stop-dot { background: var(--hanoi-mid); }
+    .sapa  .stop-dot { background: var(--sapa-mid); }
+
+    /* ── EATS TAB ── */
+    .landmark-strip { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 24px; }
+    .lm-btn {
+      padding: 6px 13px; background: var(--surface);
+      border: 1px solid var(--line); border-radius: 100px;
+      cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 500;
+      color: var(--muted); transition: all 0.18s; white-space: nowrap;
+    }
+    .lm-btn:hover { border-color: #aab4be; color: var(--ink); }
+    .lm-btn.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+    .eats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .place-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden;
+      cursor: pointer; transition: box-shadow 0.18s, transform 0.18s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .place-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .place-info { padding: 15px 16px 16px; }
+    .place-name-ko { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; }
+    .place-name-en { font-size: 12px; color: var(--muted); margin-top: 3px; }
+    .place-category { margin-top: 7px; font-size: 12px; font-weight: 600; color: var(--muted); }
+    .place-desc { margin-top: 5px; font-size: 13px; color: #4b5563; line-height: 1.6; }
+    .place-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .place-tag {
+      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 100px;
+      background: #f0f4f8; color: var(--muted); border: 1px solid var(--line);
+    }
+    .place-link-hint { margin-top: 10px; font-size: 11px; color: var(--subtle); }
+    .empty-state { padding: 48px 20px; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 0 18px 32px; }
+      .summary-row { padding: 16px 18px 0; }
+      .content-area { padding: 28px 18px 60px; }
+      .day-date-col { width: 66px; padding: 13px 8px; }
+      .stops { padding-left: 80px; }
+      .eats-grid { grid-template-columns: 1fr; }
+      .sub-btn { padding: 11px 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="top-tab active" data-tab="schedule">📅 일정</button>
+    <button class="top-tab"        data-tab="eats">🔍 맛집 &amp; 카페 &amp; 마사지</button>
+  </div>
+</nav>
+
+
+<!-- ══ SCHEDULE TAB ══ -->
+<div id="tab-schedule">
+  <header class="hero" style="height:360px">
+    <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1557750255-c76072a7aad1?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="dot"></span>2025년 8월 18일 ~ 25일</div>
+      <h1>🇻🇳 2026 베트남<br>하노이-사파 여행</h1>
+      <div class="hero-meta">
+        <span>6박 8일</span><span class="sep">·</span><span>하노이 &amp; 사파</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-row">
+    <div class="summary-pill"><span class="pill-label">✈️ 출발</span>2025년 8월 18일</div>
+    <div class="summary-pill"><span class="pill-label">🏠 도착</span>2025년 8월 25일</div>
+    <div class="summary-pill"><span class="pill-label">📅 기간</span>6박 8일</div>
+    <div class="summary-pill"><span class="pill-label">🏙 도시</span>하노이 &amp; 사파</div>
+  </div>
+
+  <div class="sub-nav">
+    <div class="sub-nav-inner" id="schedule-city-nav">
+      <button class="sub-btn active" data-city="all">전체 일정</button>
+      <button class="sub-btn" data-city="hanoi"><span class="pip"></span>하노이</button>
+      <button class="sub-btn" data-city="sapa"><span class="pip"></span>사파</button>
+    </div>
+  </div>
+
+  <div class="content-area" id="schedule-content"></div>
+</div>
+
+
+<!-- ══ EATS TAB ══ -->
+<div id="tab-eats" style="display:none">
+  <header class="hero" style="height:220px">
+    <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1562802378-063ec186a863?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="dot"></span>도시별 맛집 &amp; 카페 &amp; 마사지</div>
+      <h1>🔍 맛집 &amp; 카페 &amp; 마사지</h1>
+    </div>
+  </header>
+
+  <div class="sub-nav">
+    <div class="sub-nav-inner" id="eats-city-nav">
+      <button class="sub-btn active" data-cat="hanoi-eats"><span class="pip"></span>하노이 맛집</button>
+      <button class="sub-btn" data-cat="sapa-eats"><span class="pip"></span>사파 맛집</button>
+      <button class="sub-btn" data-cat="massage"><span class="pip"></span>마사지</button>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="landmark-strip" id="landmark-strip"></div>
+    <div class="eats-grid" id="eats-content"></div>
+  </div>
+</div>
+
+
+<script>
+/* ═══════════════════════════════
+   SCHEDULE DATA
+═══════════════════════════════ */
+const CITIES = [
+  { id:"hanoi", name:"🏙 하노이", range:"8/18 – 8/19, 8/23 – 8/25" },
+  { id:"sapa",  name:"🏔 사파",   range:"8/20 – 8/22" }
+];
+
+const DAYS = [
+  { city:"hanoi", date:"8/18", dow:"월", title:"출국",
+    stops:[
+      {t:"19:55 인천 출발"},
+      {t:"22:50 하노이 도착 (현지 시간)"},
+      {t:"호텔 이동"}
+    ]
+  },
+  { city:"hanoi", date:"8/19", dow:"화", title:"하노이 관광 & 사파 이동",
+    stops:[
+      {t:"호안끼엠 호수"},
+      {t:"올드쿼터 구경"},
+      {t:"기찻길 카페"},
+      {t:"마사지"},
+      {t:"22:00 하노이 출발"}
+    ]
+  },
+  { city:"sapa", date:"8/20", dow:"수", title:"사파 도착 & 시내 관광",
+    stops:[
+      {t:"5:55 라오까이 도착 (현지 시간)"},
+      {t:"사파 이동"},
+      {t:"사파 시내 구경 (사파 광장, 사파 호수, 사파 석조성당)"},
+      {t:"호텔 휴식"}
+    ]
+  },
+  { city:"sapa", date:"8/21", dow:"목", title:"사파 관광",
+    stops:[
+      {t:"판시판 케이블카"},
+      {t:"라오차이-따반 트래킹 투어"}
+    ]
+  },
+  { city:"sapa", date:"8/22", dow:"금", title:"사파 관광 & 하노이 이동",
+    stops:[
+      {t:"호텔 휴식"},
+      {t:"깟깟마을 관광"},
+      {t:"마사지"},
+      {t:"라오까이역 이동"},
+      {t:"21:30 라오까이 출발"}
+    ]
+  },
+  { city:"hanoi", date:"8/23", dow:"토", title:"휴식 & 하노이 관광",
+    stops:[
+      {t:"5:35 하노이 도착 (현지 시간)"},
+      {t:"호텔 휴식"},
+      {t:"하노이 야시장"},
+      {t:"하노이 맥주거리"}
+    ]
+  },
+  { city:"hanoi", date:"8/24", dow:"일", title:"하노이 관광 & 공항 이동",
+    stops:[
+      {t:"성요셉 성당"},
+      {t:"서호 카페거리"},
+      {t:"마사지"},
+      {t:"공항 이동"}
+    ]
+  },
+  { city:"hanoi", date:"8/25", dow:"월", title:"귀국",
+    stops:[
+      {t:"00:20 하노이 출발 (현지 시간)"},
+      {t:"6:40 인천 도착 (현지 시간)"}
+    ]
+  }
+];
+
+/* ═══════════════════════════════
+   EATS DATA (맛집카페 시트)
+═══════════════════════════════ */
+const EATS_DATA = {
+  hanoi: [
+    { nameKo:"E&O 티하우스",                  nameEn:"Eastern and Oriental Tea House and Coffee Parlour", category:"카페 / 디저트",  desc:"하노이 케이크 맛집", mapUrl:"https://www.google.com/maps/search/?api=1&query=Eastern%20and%20Oriental%20Tea%20House%20and%20Coffee%20Parlour%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"분짜 74 항꽛",                  nameEn:"Bún chả 74 Hàng Quạt",                              category:"분짜",          desc:"하노이 분짜", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%2074%20H%C3%A0ng%20Qu%E1%BA%A1t%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"포 가 응우옛",                   nameEn:"",                                                  category:"닭고기 쌀국수", desc:"하노이 닭고기쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"차까 탕롱",                      nameEn:"Chả Cá Thăng Long",                                 category:"생선구이",       desc:"하노이 베트남식 생선구이", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ch%E1%BA%A3%20C%C3%A1%20Th%C4%83ng%20Long%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"분보남보 백프응",                nameEn:"",                                                  category:"비빔쌀국수",     desc:"하노이 비빔쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"포틴",                          nameEn:"Phở Thìn",                                          category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ph%E1%BB%9F%20Th%C3%ACn%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"호아베오",                       nameEn:"호아베오",                                           category:"망고 빙수",      desc:"하노이 망고빙수", mapUrl:"https://www.google.com/maps/search/?api=1&query=%ED%98%B8%EC%95%84%EB%B2%A0%EC%98%A4%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"베오 커피 (기찻길 카페)",         nameEn:"BEO COFFEE (Train Street Coffee)",                  category:"카페",           desc:"하노이 기찻길 카페", mapUrl:"https://www.google.com/maps/search/?api=1&query=BEO%20COFFEE%20%28Train%20Street%20Coffee%29%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"반미 비",                        nameEn:"Bánh Mỳ Bi",                                        category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20M%E1%BB%B3%20Bi%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"미스터 버이 반쎄오",              nameEn:"미스터 버이 미잉 떠이 반쎄오",                        category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%AF%B8%EC%8A%A4%ED%84%B0%20%EB%B2%84%EC%9D%B4%20%EB%AF%B8%EC%9E%89%20%EB%96%A0%EC%9D%B4%20%EB%B0%98%EC%8E%84%EC%98%A4%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"떰비",                          nameEn:"떰비",                                               category:"베트남 가정식",   desc:"하노이 미슐랭 선정 베트남 가정식 (예약 필요)", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%96%B0%EB%B9%84%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"분짜 흐엉리엔 (오바마 분짜)",     nameEn:"분짜 흐엉리엔(오바마 분짜)",                          category:"분짜",           desc:"오바마가 방문했던 하노이 분짜", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%B6%84%EC%A7%9C%20%ED%9D%90%EC%97%89%EB%A6%AC%EC%97%94%28%EC%98%A4%EB%B0%94%EB%A7%88%20%EB%B6%84%EC%A7%9C%29%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"포 10 리꾸옥수",                 nameEn:"Pho 10 Ly Quoc Su",                                  category:"쌀국수",         desc:"하노이 쌀국수", mapUrl:"https://www.google.com/maps/search/?api=1&query=Pho%2010%20Ly%20Quoc%20Su%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"꽌안응온",                       nameEn:"꽌안응온",                                           category:"베트남 음식",     desc:"하노이 반쎄오", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EA%BD%8C%EC%95%88%EC%9D%91%EC%98%A8%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"반미 마마",                      nameEn:"Bánh mì Mama",                                      category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20m%C3%AC%20Mama%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"반미 25",                       nameEn:"반미 25",                                            category:"반미",           desc:"하노이 반미", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%B0%98%EB%AF%B8%2025%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"맥도날드 호안끼엠점",            nameEn:"맥도날드 호안끼엠점",                                 category:"패스트푸드",     desc:null, mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%ED%98%B8%EC%95%88%EB%81%BC%EC%97%A0%EC%A0%90%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"콩 카페 (Cầu Gỗ점)",            nameEn:"콩 카페",                                            category:"카페",           desc:"하노이 대표 카페 체인", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EC%BD%A9%20%EC%B9%B4%ED%8E%98%20116%20P.%20C%E1%BA%A7u%20G%E1%BB%97%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"카페 지앙",                      nameEn:"카페 지앙",                                          category:"카페",           desc:"에그커피 추천 카페", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EC%B9%B4%ED%8E%98%20%EC%A7%80%EC%95%99%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"풍향고 치즈케익",                nameEn:"풍향고 치즈케익",                                     category:"카페",           desc:"풍향고에서 방문했던 하노이 치즈케익", mapUrl:"https://www.google.com/maps/search/?api=1&query=%ED%92%8D%ED%96%A5%EA%B3%A0%20%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B5%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+  ],
+  sapa: [
+    { nameKo:"쩌띤 꽌 팬시판점",               nameEn:"Chợ Tình Quán - 63D Fansipan, Sapa",                category:"철갑상어 핫팟",  desc:"풍향고에서 방문했던 사파 철갑상어 핫팟", mapUrl:"https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20T%C3%ACnh%20Qu%C3%A1n%20-%2063D%20Fansipan%2C%20Sapa%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"반미 & 브렉퍼스트",              nameEn:"Banh Mi & Breakfast",                               category:"반미 / 브런치",  desc:null, mapUrl:"https://www.google.com/maps/search/?api=1&query=Banh%20Mi%20%26%20Breakfast%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"탄쑤언 사파 숯불구이",           nameEn:"QUÁN NƯỚNG THANH XUÂN SAPA",                        category:"꼬치구이 / 그릴", desc:"사파 꼬치구이", mapUrl:"https://www.google.com/maps/search/?api=1&query=QU%C3%81N%20N%C6%AF%E1%BB%9ANG%20THANH%20XU%C3%82N%20SAPA%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"굿모닝 베트남",                  nameEn:"Good Morning Vietnam",                              category:"베트남 음식",     desc:"사파 코코넛커리", mapUrl:"https://www.google.com/maps/search/?api=1&query=Good%20Morning%20Vietnam%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"리틀 사파",                      nameEn:"",                                                  category:"베트남 음식",     desc:"사파 시내 베트남음식점", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"패밀리 키친 & 카페",             nameEn:"Family Kitchen & Café",                             category:"베트남 음식",     desc:"사파 베트남 음식점", mapUrl:"https://www.google.com/maps/search/?api=1&query=Family%20Kitchen%20%26%20Caf%C3%A9%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"야미 레스토랑",                  nameEn:"Yummy Restaurant",                                  category:"베트남 음식",     desc:"풍향고에서 방문했던 사파 코코넛커리", mapUrl:"https://www.google.com/maps/search/?api=1&query=Yummy%20Restaurant%20%EC%82%AC%ED%8C%8C" },
+  ]
+};
+
+/* ═══════════════════════════════
+   MASSAGE DATA (마사지 시트)
+═══════════════════════════════ */
+const MASSAGE_DATA = {
+  hanoi: [
+    { nameKo:"센 스파",               nameEn:"",                                               category:"마사지 / 스파", desc:"하노이 승무원픽 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"웰터치 스파 2호점",      nameEn:"Well Touch Spa 2 (웰터치 스파 2호점)",            category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Well%20Touch%20Spa%202%20%28%EC%9B%B0%ED%84%B0%EC%B9%98%20%EC%8A%A4%ED%8C%8C%202%ED%98%B8%EC%A0%90%29%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"욜로스파",               nameEn:"베트남 하노이 마사지 욜로스파 Hanoi Massage Yolo Spa", category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=%EB%B2%A0%ED%8A%B8%EB%82%A8%20%ED%95%98%EB%85%B8%EC%9D%B4%20%EB%A7%88%EC%82%AC%EC%A7%80%20%EC%9A%9C%EB%A1%9C%EC%8A%A4%ED%8C%8C%20Hanoi%20Massage%20Yolo%20Spa%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+    { nameKo:"에스테바 스파",          nameEn:"Estheva Spa",                                     category:"마사지 / 스파", desc:"하노이 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Estheva%20Spa%20%ED%95%98%EB%85%B8%EC%9D%B4" },
+  ],
+  sapa: [
+    { nameKo:"민쩌우 스파",            nameEn:"Minh Châu Spa",            category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Minh%20Ch%C3%A2u%20Spa%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"에덴 마사지 & 스파",     nameEn:"Eden Massage & Spa",       category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=Eden%20Massage%20%26%20Spa%20%EC%82%AC%ED%8C%8C" },
+    { nameKo:"마사지 017 동러이",      nameEn:"MASSAGE 017 Đồng Lợi",     category:"마사지 / 스파", desc:"사파 마사지", mapUrl:"https://www.google.com/maps/search/?api=1&query=MASSAGE%20017%20%C4%90%E1%BB%93ng%20L%E1%BB%A3i%20%EC%82%AC%ED%8C%8C" },
+  ]
+};
+
+const CATEGORY_EMOJI = {
+  "베트남 음식":    "🇻🇳",
+  "쌀국수":         "🍜",
+  "분짜":           "🍜",
+  "닭고기 쌀국수":  "🍜",
+  "비빔쌀국수":     "🍜",
+  "철갑상어 핫팟":  "🍲",
+  "생선구이":       "🐟",
+  "꼬치구이":       "🍢",
+  "반미":           "🥖",
+  "반미 / 브런치":  "🥖",
+  "베트남 가정식":  "🇻🇳",
+  "패스트푸드":     "🍟",
+  "망고 빙수":      "🍧",
+  "마사지":         "💆",
+  "마사지 / 스파":  "💆",
+  "카페":           "☕",
+  "브런치 카페":    "☕",
+  "브런치":         "🍳",
+  "바베큐":         "🍖",
+  "해산물":         "🦐",
+  "한식당":         "🇰🇷",
+  "아이스크림":     "🍦",
+  "디저트":         "🍰",
+  "베이커리":       "🥐",
+  "버거":           "🍔",
+};
+
+function categoryEmoji(cat) {
+  for (const [key, emoji] of Object.entries(CATEGORY_EMOJI)) {
+    if (cat.includes(key)) return emoji;
+  }
+  return "🍴";
+}
+
+const NON_MEAL_KEYWORDS = ["카페","브런치","아이스크림","디저트","베이커리"];
+function isMeal(cat) { return !NON_MEAL_KEYWORDS.some(k => cat.includes(k)); }
+
+/* ═══════════════════════════════
+   SCHEDULE RENDERING
+═══════════════════════════════ */
+function stopHTML(s) {
+  return `<div class="stop-row">
+    <div class="stop-line-col"><div class="stop-dot"></div><div class="stop-connector"></div></div>
+    <div class="stop-text">${s.t}</div>
+  </div>`;
+}
+
+function dayCardHTML(d) {
+  return `
+    <article class="day-card">
+      <div class="day-card-head">
+        <div class="day-date-col">
+          <div class="day-date-num">${d.date}</div>
+          <div class="day-date-dow">${d.dow}</div>
+        </div>
+        <div class="day-title-col"><h3>${d.title}</h3></div>
+      </div>
+      <div class="stops">${d.stops.map(stopHTML).join("")}</div>
+    </article>`;
+}
+
+function renderSchedule(cityFilter) {
+  const el = document.getElementById("schedule-content");
+
+  if (cityFilter === "all") {
+    // 날짜 순서대로 전체 — 도시 색상은 카드 border-left로 구분
+    el.innerHTML = `<div class="days-grid">${DAYS.map(d => {
+      return `<article class="day-card" style="border-left:3px solid var(--${d.city})">
+        <div class="day-card-head">
+          <div class="day-date-col">
+            <div class="day-date-num">${d.date}</div>
+            <div class="day-date-dow">${d.dow}</div>
+          </div>
+          <div class="day-title-col"><h3>${d.title}</h3></div>
+        </div>
+        <div class="stops ${d.city}">${d.stops.map(stopHTML).join("")}</div>
+      </article>`;
+    }).join("")}</div>`;
+  } else {
+    // 도시별 필터
+    const city = CITIES.find(c => c.id === cityFilter);
+    const ds = DAYS.filter(d => d.city === cityFilter);
+    el.innerHTML = `<section class="city-section ${cityFilter}">
+      <div class="city-header">
+        <h2>${city.name}</h2>
+        <span class="city-range">${city.range}</span>
+      </div>
+      <div class="days-grid">${ds.map(dayCardHTML).join("")}</div>
+    </section>`;
+  }
+}
+
+document.querySelectorAll("#schedule-city-nav .sub-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#schedule-city-nav .sub-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderSchedule(btn.dataset.city);
+  });
+});
+
+/* ═══════════════════════════════
+   EATS / MASSAGE RENDERING
+═══════════════════════════════ */
+let currentCategory = "hanoi-eats";   // hanoi-eats | sapa-eats | massage
+let currentMassageCity = "hanoi";     // 마사지 탭 안 도시 필터
+
+function placeCardHTML(p) {
+  const nameEn = p.nameEn ? `<div class="place-name-en">${p.nameEn}</div>` : "";
+  const desc = p.desc ? `<div class="place-desc">${p.desc}</div>` : "";
+  return `
+    <a class="place-card" href="${p.mapUrl}" target="_blank" rel="noopener">
+      <div class="place-info">
+        <div class="place-name-ko">${p.nameKo}</div>
+        ${nameEn}
+        <div class="place-category">${categoryEmoji(p.category)} ${p.category}</div>
+        ${desc}
+        <div class="place-link-hint">📍 Google Maps에서 보기</div>
+      </div>
+    </a>`;
+}
+
+function renderEats() {
+  const landmarkStrip = document.getElementById("landmark-strip");
+  const grid = document.getElementById("eats-content");
+
+  if (currentCategory === "massage") {
+    // 마사지 탭: 하노이 / 사파 서브 필터
+    landmarkStrip.innerHTML = `
+      <button class="lm-btn${currentMassageCity==="hanoi"?" active":""}" data-mcity="hanoi">하노이</button>
+      <button class="lm-btn${currentMassageCity==="sapa"?" active":""}" data-mcity="sapa">사파</button>
+    `;
+    document.querySelectorAll(".lm-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        currentMassageCity = btn.dataset.mcity;
+        renderEats();
+      });
+    });
+    const places = MASSAGE_DATA[currentMassageCity];
+    grid.innerHTML = places.length
+      ? places.map(placeCardHTML).join("")
+      : `<div class="empty-state">곧 정보가 추가될 예정이에요 💆</div>`;
+  } else {
+    // 맛집 탭: 필터 없이 바로 표시
+    landmarkStrip.innerHTML = "";
+    const cityKey = currentCategory === "hanoi-eats" ? "hanoi" : "sapa";
+    const places = EATS_DATA[cityKey];
+    grid.innerHTML = places.length
+      ? places.map(placeCardHTML).join("")
+      : `<div class="empty-state">곧 맛집 정보가 추가될 예정이에요 🍜</div>`;
+  }
+}
+
+document.querySelectorAll("#eats-city-nav .sub-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#eats-city-nav .sub-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentCategory = btn.dataset.cat;
+    renderEats();
+  });
+});
+
+/* ═══════════════════════════════
+   TOP TAB SWITCHING
+═══════════════════════════════ */
+let currentTopTab = "schedule";
+function showTab(tabId) {
+  currentTopTab = tabId;
+  document.querySelectorAll(".top-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tabId));
+  document.querySelectorAll("[id^='tab-']").forEach(el => el.style.display = "none");
+  document.getElementById(`tab-${tabId}`).style.display = "block";
+  window.scrollTo({ top: 0 });
+}
+document.querySelectorAll(".top-tab").forEach(btn => {
+  btn.addEventListener("click", () => showTab(btn.dataset.tab));
+});
+
+/* ── INIT ── */
+renderSchedule("all");
+renderEats();
+</script>
+</body>
+</html>
